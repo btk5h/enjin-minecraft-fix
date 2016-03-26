@@ -1,5 +1,9 @@
 'use strict'
 
+if (!HTMLCollection.prototype[Symbol.iterator]) {
+  HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator]
+}
+
 for (let canvas of document.getElementsByClassName('minecraft-model')) {
   getUUID(canvas.getAttribute('data-name'), uuid => {
     let image = new Image()
